@@ -54,6 +54,11 @@ public class SolicitudServiImple  implements ISolicitudServi{
     public List<SolicitudUsuario> listaCompletaEnviada() {
         List<SolicitudUsuario> resultado = new LinkedList<>();
         List<Solicitud> solicitudes = repo.findAll();
+        /*solicitudes.stream()
+                .filter(so -> so.getEstado().equals("Enviada"))
+                .forEach(s -> {
+                    resultado.add( new SolicitudUsuario(s, usuarioRepo.findBySolicitudes(s).getId(), usuarioRepo.findBySolicitudes(s).getNombre()));
+                });*/
         for(Solicitud s : solicitudes){
             if (s.getEstado().equals("Enviada")) {
                 resultado.add(new SolicitudUsuario(s, usuarioRepo.findBySolicitudes(s).getId(), usuarioRepo.findBySolicitudes(s).getNombre()));
