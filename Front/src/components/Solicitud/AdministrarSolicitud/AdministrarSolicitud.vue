@@ -53,119 +53,7 @@ export default {
         { name: 'fecha', label: 'Fecha', field: row => row.solicitud.fecha.split('T', 1)[0] },
         { name: 'acciones', label: 'Acciones' },
       ],
-      data: [
-        
-        /* {
-          name: 'Javier Ceballo Perez',
-          usuario: 'javiercp',
-          marca: 'HP',
-          modelo: 'Pavilion G6',
-          noserie: 'e453534',
-          macwifi: 'D4 - D4 - D4 - 4D',
-          maccable: 'D4 - D4 - D4 - 4D',
-          tipo: 'Laptop',
-          fecha: '2022/01/01',
-        },
-        {
-          name: 'Lázaro Alcedo FIALLO',
-          usuario: 'lazaroeaf',
-          marca: 'HP',
-          modelo: 'Psafsdf',
-          noserie: 'g35ert4',
-          macwifi: 'D4 - D4 - D4 - 4D',
-          maccable: 'D4 - D4 - D4 - 4D',
-          tipo: 'Laptop',
-          fecha: '2022/01/01'
-        },
-        {
-          name: 'Javier Ceballo Perez',
-          usuario: 'javiercp',
-          marca: 'HP',
-          modelo: 'Pavilion G6',
-          noserie: 'e453534',
-          macwifi: 'D4 - D4 - D4 - 4D',
-          maccable: 'D4 - D4 - D4 - 4D',
-          tipo: 'Laptop',
-          fecha: '2022/01/01'
-        },
-        {
-          name: 'Javier Ceballo Perez',
-          usuario: 'javiercp',
-          marca: 'HP',
-          modelo: 'Pavilion G6',
-          noserie: 'e453534',
-          macwifi: 'D4 - D4 - D4 - 4D',
-          maccable: 'D4 - D4 - D4 - 4D',
-          tipo: 'Laptop',
-          fecha: '2022/01/01'
-        },
-        {
-          name: 'Javier Ceballo Perez',
-          usuario: 'javiercp',
-          marca: 'HP',
-          modelo: 'Pavilion G6',
-          noserie: 'e453534',
-          macwifi: 'D4 - D4 - D4 - 4D',
-          maccable: 'D4 - D4 - D4 - 4D',
-          tipo: 'Laptop',
-          fecha: '2022/01/01'
-        },
-        {
-          name: 'Javier Ceballo Perez',
-          usuario: 'javiercp',
-          marca: 'HP',
-          modelo: 'Pavilion G6',
-          noserie: 'e453534',
-          macwifi: 'D4 - D4 - D4 - 4D',
-          maccable: 'D4 - D4 - D4 - 4D',
-          tipo: 'Laptop',
-          fecha: '2022/01/01'
-        },
-        {
-          name: 'Javier Ceballo Perez',
-          usuario: 'javiercp',
-          marca: 'HP',
-          modelo: 'Pavilion G6',
-          noserie: 'e453534',
-          macwifi: 'D4 - D4 - D4 - 4D',
-          maccable: 'D4 - D4 - D4 - 4D',
-          tipo: 'Laptop',
-          fecha: '2022/01/01'
-        },
-        {
-          name: 'Javier Ceballo Perez',
-          usuario: 'javiercp',
-          marca: 'HP',
-          modelo: 'Pavilion G6',
-          noserie: 'e453534',
-          macwifi: 'D4 - D4 - D4 - 4D',
-          maccable: 'D4 - D4 - D4 - 4D',
-          tipo: 'Laptop',
-          fecha: '2022/01/01'
-        },
-        {
-          name: 'Javier Ceballo Perez',
-          usuario: 'javiercp',
-          marca: 'HP',
-          modelo: 'Pavilion G6',
-          noserie: 'e453534',
-          macwifi: 'D4 - D4 - D4 - 4D',
-          maccable: 'D4 - D4 - D4 - 4D',
-          tipo: 'Laptop',
-          fecha: '2022/01/01'
-        },
-        {
-          name: 'Javier Ceballo Perez',
-          usuario: 'javiercp',
-          marca: 'HP',
-          modelo: 'Pavilion G6',
-          noserie: 'e453534',
-          macwifi: 'D4 - D4 - D4 - 4D',
-          maccable: 'D4 - D4 - D4 - 4D',
-          tipo: 'Laptop',
-          fecha: '2022/01/01'
-        } */
-      ]
+      data: [ ]
 
       
     }
@@ -222,16 +110,7 @@ export default {
               })
             .finally(() => this.loading = false);
          },
-
-         eliminarDenunciaa(id){
-           for (const i of this.data) {
-             conslole.log(i)
-             if (this.data[i].solicitud.id === id) {
-               this.data.splice(i, 1)
-             }
-           }
-         },
-
+         
          eliminarDenuncia(id){
            for (let i = 0; i < this.data.length; i++) {
              const element = this.data[i];

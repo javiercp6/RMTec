@@ -81,7 +81,7 @@ const linksData = [
     title: 'Gestionar Solicitud',
     caption: 'github.com/quasarframework',
     icon: 'code',
-    router: 'Solicitud'
+    router: 'solicitante'
   },
   {
     title: 'Ayuda',

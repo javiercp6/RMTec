@@ -15,7 +15,7 @@ export default {
     },
     methods: {
         escaner(){
-            cordova.plugins.barcodeScaner.scan(function (result){console.log(result.text)}, function (error){console.log(error)})
+            
         }
     }
 }

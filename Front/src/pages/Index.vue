@@ -4,7 +4,7 @@
       <div class="col col-xs-12 col-sm-6 row items-center">
         <div class="title-index q-pa-lg">
           <h1>Registra tus medios tecnológicos en simples pasos</h1>
-          <q-btn unelevated rounded color="primary" label="Crear Solicitud" to="Solicitud"/>
+          <q-btn unelevated rounded color="primary" label="Crear Solicitud" to="solicitante"/>
         </div>
       </div>
       <div class="col col-xs-12 col-sm-6 flex flex-center">

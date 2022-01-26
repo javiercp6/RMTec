@@ -5,7 +5,8 @@ export default class Solicitud {
    options = {
       headers:{
           'content-type':'application/json',
-          "Acces-Control-Allow-Origin":"*"
+          "Acces-Control-Allow-Origin":"*",
+          //'Authorization': localStorage.getItem("token")
       },
        }
    url = "http://localhost:8080/solicitud"
@@ -16,6 +17,10 @@ export default class Solicitud {
 
    listaCompletaEnviada(){
       return axios.get(this.url + "/listacompletaenviada/", this.options ) 
+   }
+
+   listaPorSolicitud(){
+      return axios.get(this.url + "/listarporsolicitud/", this.options ) 
    }
    
    modificar(data) {
@@ -29,7 +34,7 @@ export default class Solicitud {
    
    salvarSolicitud(data) {
       const salvSolicitud = {
-         idUsuario: 2,
+         idUsuario: 1,
          solicitud: {
             id: data.id,
             marca: data.marca,

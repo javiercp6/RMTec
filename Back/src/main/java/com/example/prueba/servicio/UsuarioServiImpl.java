@@ -33,16 +33,21 @@ public class UsuarioServiImpl implements IUsuarioServi {
     public void eliminarPorId(int id) {
         repo.deleteById(id);
     }
- 
+
     @Override
     public List<Usuario> listarPorSolicitud() {
         List<Usuario> resultado = new LinkedList<>();
         List<Usuario> usuarios = repo.findAll();
-        for(Usuario u : usuarios){
+        for (Usuario u : usuarios) {
             if (u.getSolicitudes().isEmpty() == false) {
                 resultado.add(u);
             }
-        } 
+        }
         return resultado;
-    } 
+    }
+
+    @Override
+    public Usuario getByUsername(String arg0) {
+        return repo.findByUsername(arg0);
+    }
 }

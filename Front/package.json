@@ -13,6 +13,8 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "jwt-decode": "^3.1.2",
+    "quagga": "^0.12.1",
     "quasar": "^1.0.0"
   },
   "devDependencies": {

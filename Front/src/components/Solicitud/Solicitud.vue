@@ -19,19 +19,46 @@
 
         <q-dialog v-model="modadd" persistent>
                 <FormSolicitud
-                :solicitud="solicitud"
+                :solicitud="
+                  {
+                    id: null,
+                    marca: null,
+                    modelo: null,
+                    noserie: null,
+                    macwifi: null,
+                    maccable: null,
+                    tipo: 'Laptop',
+                    estado: 'Enviada',
+                    fecha: new Date
+                  }
+                "
                 :crear="true"
+                @creado="solicitudes.push($event), reset()"
                 @cerrar="reset"
                 />
         </q-dialog>
         <q-dialog v-model="modmodif" persistent>
                 <FormSolicitud
-                :solicitud="solicitud"
+                :solicitud="
+                  {
+                    id: solicitud.id,
+                    marca: solicitud.marca,
+                    modelo: solicitud.modelo,
+                    noserie: solicitud.noserie,
+                    macwifi: solicitud.macwifi,
+                    maccable: solicitud.maccable,
+                    tipo: solicitud.tipo,
+                    estado: 'Enviada',
+                    fecha: new Date
+                  }
+                "
+                @modificado="modificarSolicitud($event), reset()"
                 @cerrar="reset"
                 />
         </q-dialog>
         <q-dialog v-model="modmelim" persistent>
                 <EliminarSolicitud
+                @eliminado="eliminarSolicitud($event)"
                 :idsolicitud="solicitud.id"
                 @cerrar="reset"/>
         </q-dialog>
@@ -63,7 +90,8 @@
                   size= 18px
                   name="edit"
                   class="icon-btn"
-                  @click=" solicitud = solict, modmodif = true"
+                  @click="solicitud = solict, modmodif = true "
+                   
                 >
                   <q-tooltip>Modificar</q-tooltip>
                 </q-icon>
@@ -109,9 +137,11 @@
                       </div>
                       <div class="q-pa-xs flex">
                         <div class="">Fecha:</div>
-                        <div class="q-item__label--caption q-pl-sm">{{solict.fecha.split('T', 1)[0]}}</div>
+                        <div class="q-item__label--caption q-pl-sm">{{ solict.fecha }}</div>
+                        <!-- .split('T', 1)[0] -->
+                        <!-- solicitud = solict, modmodif = true -->
                       </div>
-                    </q-card-section>
+                    </q-card-section> 
             </q-card-section>
            <!--  <q-card-section class="card-section">
                     <q-card-section style="padding: 5px">
@@ -155,7 +185,7 @@
 import SolicitudService from '../../Servicio/SolicitudService'
 import FormSolicitud from './FormSolicitud.vue'
 import EliminarSolicitud from './EliminarSolicitud.vue'
-
+import jwt_decode from 'jwt-decode'
 
 export default {
     components : {
@@ -197,6 +227,9 @@ export default {
      },
      mounted(){
       this.listar()
+      const decoded = jwt_decode(localStorage.getItem("token"))
+      console.log(decoded)
+
      },
      methods: {
 
@@ -215,7 +248,7 @@ export default {
               })
             .finally(() => this.loading = false);
          },
-         reset(){
+        /*  reset(){
            this.modmelim = false
            this.modadd = false,
            this.modmodif = false,
@@ -232,7 +265,45 @@ export default {
           
            this.listar()
            console.log("reset")
+         }, */
+
+         reset(){
+           this.modmelim = false
+           this.modadd = false,
+           this.modmodif = false,
+           this.modelimtod = false,           
+          /* this.solicitud.id = null,
+          this.solicitud.marca = null,
+          this.solicitud.modelo = null,
+          this.solicitud.noserie = null,
+          this.solicitud.macwifi = null,
+          this.solicitud.maccable = null,
+          this.solicitud.tipo = "Laptop",
+          this.solicitud.estado = "Enviada",
+          this.solicitud.fecha = new Date */
+           console.log("reset")     
+
          },
+
+         modificarSolicitud(solicitud){
+           for (let i = 0; i < this.solicitudes.length; i++) {
+             const element = this.solicitudes[i];
+             if (element.id == solicitud.id) {
+               this.solicitudes.splice(i, 1, solicitud)
+             }
+           }
+           console.log("modificado")
+           console.log(solicitud)
+         },
+
+         eliminarSolicitud(id){
+           for (let i = 0; i < this.solicitudes.length; i++) {
+             const element = this.solicitudes[i];
+             if (element.id == id) {
+               this.solicitudes.splice(i, 1)
+             }
+           }
+         }
      }
 }
 </script>

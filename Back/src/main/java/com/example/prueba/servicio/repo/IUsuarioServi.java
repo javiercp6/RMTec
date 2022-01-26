@@ -10,4 +10,5 @@ public interface IUsuarioServi {
     List<Usuario> listar();
     List<Usuario> listarPorSolicitud();
     void eliminarPorId(int id);
+    Usuario getByUsername(String arg0);
 }

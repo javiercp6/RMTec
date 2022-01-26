@@ -48,6 +48,7 @@ export default {
                         console.log(response)
                         console.log(response.data)  
                          this.$emit('cerrar')
+                         this.$emit('eliminado', response.data.id)
                          this.$q.notify({
                                         color: 'green-4',
                                         textColor: 'white',

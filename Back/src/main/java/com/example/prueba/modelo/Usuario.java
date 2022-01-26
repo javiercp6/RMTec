@@ -1,22 +1,39 @@
 package com.example.prueba.modelo;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.OneToMany;
+
 @Entity
-public class Usuario extends Entidad{
+public class Usuario extends Entidad {
+
+    public enum Rol {
+        Administrador, Solisitante, Custodio
+    }
+
+    @Column
     private String nombre;
+    @Column
     private String username;
+    @Column
     private String password;
-    private String rol;
+    @Column
+    @Enumerated(EnumType.STRING)
+    private Rol rol;    
+    @Column
+    @Enumerated(EnumType.STRING)
+    private Rol rolSecundario;    
     @OneToMany(cascade = CascadeType.REMOVE)
     private List<Solicitud> solicitudes;
 
     public Usuario() {
-    } 
- 
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -41,12 +58,21 @@ public class Usuario extends Entidad{
         this.password = password;
     }
 
-    public String getRol() {
+    
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
+    }
+
+    public Rol getRolSecundario() {
+        return rolSecundario;
+    }
+
+    public void setRolSecundario(Rol rolSecundario) {
+        this.rolSecundario = rolSecundario;
     }
 
     public List<Solicitud> getSolicitudes() {

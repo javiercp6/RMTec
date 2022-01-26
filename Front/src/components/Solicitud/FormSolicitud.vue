@@ -51,13 +51,13 @@
                 :rules="[ val => val && val.length > 0 || 'Este campo no puede enviarse vacio', val => val && val.length === 17 || 'La direccion MAC debe contar con 8 cacarteres']"
                 />
                 <div class="q-gutter-md">
-                    <q-radio size="sm" dense v-model="solicit.tipo" val="Laptop" label="Laptop" />
-                    <q-radio size="sm" dense v-model="solicit.tipo" val="Table" label="Table" />
-                    <q-radio size="sm" dense v-model="solicit.tipo" val="PC de Escritorio" label="PC de Escritorio" />
+                    <q-radio size="xs" dense v-model="solicit.tipo" val="Laptop" label="Laptop" />
+                    <q-radio size="xs" dense v-model="solicit.tipo" val="Table" label="Table" />
+                    <q-radio size="xs" dense v-model="solicit.tipo" val="PC de Escritorio" label="PC de Escritorio" />
                 </div>
                 <q-card-actions align="right" class="text-primary">
-                    <q-btn flat rounded label="Cancelar" @click="Reset()"/>
-                    <q-btn label="Aceptar" rounded type="submit" color="primary"/>
+                    <q-btn  flat rounded label="Cancelar" @click="Reset()"/>
+                    <q-btn  label="Aceptar"  rounded type="submit" color="primary"/>
                 </q-card-actions>
             </q-form>
         </q-card-section>          
@@ -73,7 +73,7 @@ export default {
         return {
             solicit: this.solicitud
         }
-    },
+    },  
  
     props: {
         solicitud: {
@@ -120,7 +120,7 @@ export default {
                         icon: 'cloud_done',
                         message: 'Solicitud Modificada'
                         })
-                    this.$emit('cerrar')
+                    this.$emit('modificado', response.data)
                      
                 })
                 .catch(error => {
@@ -135,15 +135,16 @@ export default {
                .then(response => {
                    console.log("add trab")
                     console.log(response)
-                    console.log(response.data)
+                    console.log(response.data + "Antes de emitir")
                     this.$q.notify({
                         color: 'green-4',
                         textColor: 'white',
                         icon: 'cloud_done',
                         message: 'Solicitud Enviada'
                         })
-                    this.$emit('cerrar')
-                     
+                    const solicitud = response.data.solicitud
+                    this.$emit('creado', solicitud)
+                    console.log(response.data.solicitud)
                 })
                 .catch(error => {
                     console.log(error, "error , error , error")

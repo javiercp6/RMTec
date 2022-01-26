@@ -21,10 +21,10 @@ public class UsuarioControl {
         return servi.listar();
     }
 
-    /* @GetMapping(value = "/listarporsolicitud")
+     @GetMapping(value = "/listarporsolicitud")
     public List<Usuario> listarPorSol(){
         return servi.listarPorSolicitud();
-    } */
+    }
 
     @PostMapping(value = "/salvar")
     public ResponseEntity<Usuario> salvar(@RequestBody Usuario usuario){

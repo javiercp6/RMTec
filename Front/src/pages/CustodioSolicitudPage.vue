@@ -1,12 +1,13 @@
 <template>
-  <CustodioSolicitud/>
+  <RevisarSolicitud/>
 </template>
 
 <script>
-import CustodioSolicitud from '../components/Solicitud/AdministrarSolicitud/CustodioSolicitud/Prueba.vue'
+import Prueba from '../components/Solicitud/AdministrarSolicitud/CustodioSolicitud/Prueba3.vue'
+import RevisarSolicitud from '../components/Solicitud/AdministrarSolicitud/CustodioSolicitud/Prueba3.vue'
 export default {
   components: {
-    CustodioSolicitud
+    RevisarSolicitud
   }
 
 }
