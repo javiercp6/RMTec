@@ -20,10 +20,15 @@ public class UsuarioControl {
     public List<Usuario> listar(){
         return servi.listar();
     }
-
+    
      @GetMapping(value = "/listarporsolicitud")
     public List<Usuario> listarPorSol(){
         return servi.listarPorSolicitud();
+    }
+
+    @PostMapping(value = "/obtenerporusername/{username}")
+    public ResponseEntity<Usuario> obtenerPoruser(@PathVariable int username){
+        return servi.obtenerPorUserName(username);
     }
 
     @PostMapping(value = "/salvar")

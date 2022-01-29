@@ -34,7 +34,7 @@ export default class Solicitud {
    
    salvarSolicitud(data) {
       const salvSolicitud = {
-         idUsuario: 1,
+         idUsuario: 6,
          solicitud: {
             id: data.id,
             marca: data.marca,

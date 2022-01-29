@@ -25,6 +25,11 @@ public class UsuarioServiImpl implements IUsuarioServi {
     }
 
     @Override
+    public Usuario obtenerPorUserName(String username) {
+        return repo.findByUsername(username);
+    }
+
+    @Override
     public List<Usuario> listar() {
         return repo.findAll();
     }
@@ -33,6 +38,7 @@ public class UsuarioServiImpl implements IUsuarioServi {
     public void eliminarPorId(int id) {
         repo.deleteById(id);
     }
+    
 
     @Override
     public List<Usuario> listarPorSolicitud() {

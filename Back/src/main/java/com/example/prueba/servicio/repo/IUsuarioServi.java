@@ -7,6 +7,7 @@ import java.util.List;
 public interface IUsuarioServi {
     Usuario salvar(Usuario usuario);
     Usuario obtenerPorId(int id);
+    Usuario obtenerPorUserName(String username);
     List<Usuario> listar();
     List<Usuario> listarPorSolicitud();
     void eliminarPorId(int id);

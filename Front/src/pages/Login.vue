@@ -89,7 +89,7 @@ export default {
                     this.$router.push("/")
                     })
                     .catch(error => {
-                            console.log(error, "Hay un errrrrrrrrrrrrrorrrrrrrrrrrrrrrr")
+                            console.log(error, "Error en el login")
                             this.errored = true
                     })
                     .finally(() => this.loading = false);

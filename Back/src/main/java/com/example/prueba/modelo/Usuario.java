@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 public class Usuario extends Entidad {
 
     public enum Rol {
-        Administrador, Solisitante, Custodio
+        Administrador, Solicitante, Custodio
     }
 
     @Column
