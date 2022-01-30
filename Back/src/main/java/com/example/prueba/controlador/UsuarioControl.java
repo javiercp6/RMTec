@@ -1,5 +1,6 @@
 package com.example.prueba.controlador;
 
+import com.example.prueba.modelo.Solicitud;
 import com.example.prueba.modelo.Usuario;
 import com.example.prueba.servicio.repo.IUsuarioServi;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class UsuarioControl {
     }
 
     @PostMapping(value = "/obtenerporusername/{username}")
-    public ResponseEntity<Usuario> obtenerPoruser(@PathVariable int username){
+    public List<Solicitud> obtenerPoruser(@PathVariable String username){
         return servi.obtenerPorUserName(username);
     }
 

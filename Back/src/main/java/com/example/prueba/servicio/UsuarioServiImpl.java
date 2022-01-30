@@ -1,5 +1,6 @@
 package com.example.prueba.servicio;
 
+import com.example.prueba.modelo.Solicitud;
 import com.example.prueba.modelo.Usuario;
 import com.example.prueba.repositorio.IUsuarioRepo;
 import com.example.prueba.servicio.repo.IUsuarioServi;
@@ -25,8 +26,8 @@ public class UsuarioServiImpl implements IUsuarioServi {
     }
 
     @Override
-    public Usuario obtenerPorUserName(String username) {
-        return repo.findByUsername(username);
+    public List<Solicitud> obtenerPorUserName(String username) {
+        return repo.findByUsername(username).getSolicitudes();
     }
 
     @Override
