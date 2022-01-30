@@ -3,18 +3,21 @@ package com.example.prueba.controlador.peticion;
 import com.example.prueba.modelo.Solicitud;
 
 public class SalvarSolicitud {
-    int idUsuario;
+    String nombreUsuario;
     Solicitud solicitud;
-    public SalvarSolicitud(int idUsuario, Solicitud solicitud) {
-        this.idUsuario = idUsuario;
+    public SalvarSolicitud(String nombreUsuario, Solicitud solicitud) {
+        this.nombreUsuario = nombreUsuario;
         this.solicitud = solicitud;
     }
-    public int getIdUsuario() {
-        return idUsuario;
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
+
     public Solicitud getSolicitud() {
         return solicitud;
     }

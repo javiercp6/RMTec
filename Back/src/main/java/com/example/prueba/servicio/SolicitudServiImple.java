@@ -83,7 +83,7 @@ public class SolicitudServiImple  implements ISolicitudServi{
     @Override
     public SalvarSolicitud salvarSolicitud(SalvarSolicitud solicitud) {
         repo.save(solicitud.getSolicitud());
-        Usuario u = usuarioRepo.findById(solicitud.getIdUsuario());
+        Usuario u = usuarioRepo.findByUsername(solicitud.getNombreUsuario());
         u.getSolicitudes().add(solicitud.getSolicitud());
         usuarioRepo.save(u);
         return solicitud;
