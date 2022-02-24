@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 @RequestMapping("/usuario")
 public class UsuarioControl {
     @Autowired
@@ -22,6 +22,7 @@ public class UsuarioControl {
         return servi.listar();
     }
     
+
      @GetMapping(value = "/listarporsolicitud")
     public List<Usuario> listarPorSol(){
         return servi.listarPorSolicitud();

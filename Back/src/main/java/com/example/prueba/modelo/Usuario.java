@@ -58,7 +58,6 @@ public class Usuario extends Entidad {
         this.password = password;
     }
 
-    
     public Rol getRol() {
         return rol;
     }

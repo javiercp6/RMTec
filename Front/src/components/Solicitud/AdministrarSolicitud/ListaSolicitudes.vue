@@ -1,12 +1,31 @@
 <template>
   <div class="q-pa-md">
+    <q-dialog v-model="modalescaner" persistent>
+        <Escaner 
+        @barcode="buscar($event)"             
+        />
+    </q-dialog>
     <q-table
-      title="Treats"
+      title="Solicitudes"
       dense
       :data="data"
       :columns="columns"
       row-key="name"
+      :filter="filter"
+
     >
+
+     <template v-slot:top-right>
+       <div class="q-pr-lg">
+         <q-btn color="primary" rounded outline icon="qr_code_scanner" label="Escanear" @click="modalescaner = true"/>
+       </div>
+       <q-space />
+        <q-input borderless dense debounce="300" v-model="filter" placeholder="Buscar...">
+          <template v-slot:append>
+            <q-icon name="search" />
+          </template>
+        </q-input>
+      </template>
         
       <template v-slot:body-cell-marca="props">
         <q-td :props="props">
@@ -72,10 +91,17 @@
 
 <script>
 import UsuarioService from '../../../Servicio/UsuarioService'
+import Escaner from '../AdministrarSolicitud/CustodioSolicitud/Prueba3.vue'
 export default {
+  components : {
+      Escaner
+      },
+
   data () {
     return {
       usuarioService: null,
+      modalescaner: false,
+      filter: '',
       columns: [
         {
           name: 'solicitante',
@@ -96,12 +122,14 @@ export default {
         { name: 'fecha', label: 'Fecha', },
         { name: 'estado', label: 'Estado' },
       ],
-      data: [ ]
+      data: []
 
       
     }
     
   },
+
+  
   created(){
     this.usuarioService = new UsuarioService();
   },
@@ -112,7 +140,7 @@ export default {
   methods: {
          listar(){
            console.log("listar")
-             this.usuarioService.listaPorSolicitud().then(response =>{
+             this.usuarioService.listarPorSolicitud().then(response =>{
                 console.log(response.data)
                 this.data = response.data
                  
@@ -123,6 +151,11 @@ export default {
               })
             .finally(() => this.loading = false);
          },
+
+         buscar(barcode){
+           this.filter = 'javiercp'
+           this.modalescaner = false
+         }
 
 
      }

@@ -58,6 +58,8 @@
 <script>
 //import { mapActions, mapGetters, mapState } from 'vuex';  
 import axios from "axios";
+import { mapActions } from 'vuex'
+import jwt_decode from 'jwt-decode'
 export default {
     computed: {
       // ...mapState('denuncia', ['denuncias']),
@@ -74,19 +76,31 @@ export default {
     },
     methods: {
      //   ...mapActions('login', ['registrarUsuario']), 
-     //   ...mapActions('denuncia', ['getDenuncias']),  
+     //   ...mapActions('denuncia', ['getDenuncias']), 
+     ...mapActions(['actionscambiarRol']),
+
         submitFormLogin(){
             this.$refs.usuario.validate()
             this.$refs.contraseña.validate()
             if (!this.$refs.usuario.hasError && !this.$refs.contraseña.hasError) {
                 //this.registrarUsuario(this.formLogin) 
                 //console.log("hola state" + this.denuncias)
-                axios.post("http://localhost:8080/login", this.formLogin).then(response =>{
+                axios.post("http://localhost:8080/login", this.formLogin,).then(response =>{
                     console.log(response.data)
                     localStorage.setItem("token", response.data)
+                    
                     axios.defaults.headers.common['Authorization'] = localStorage.getItem("token")
                     console.log(axios.defaults.headers.common['Authorization'])
-                    this.$router.push("/")
+                    this.actionscambiarRol(jwt_decode(localStorage.getItem("token")).roles[0].authority)
+                    //this.$store.commit('setRol', jwt_decode(localStorage.getItem("token")).roles[0].authority)
+                    if (jwt_decode(localStorage.getItem("token")).roles[0].authority === 'Solicitante') {
+                        this.$router.push("/")
+                    } else if (jwt_decode(localStorage.getItem("token")).roles[0].authority === 'Administrador'){
+                        this.$router.push("adminsolicitud")
+                    } else{
+                        this.$router.push("custodiosolicitud")
+                    }
+
                     })
                     .catch(error => {
                             console.log(error, "Error en el login")

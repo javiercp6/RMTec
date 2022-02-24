@@ -136,8 +136,10 @@ export default {
       //   name: "search",
       //   barCodeData,
       // });
+      this.$emit('barcode', barCodeData)
       console.log("data", data);
       console.log("barcodeData", barCodeData);
+      Quagga.stop();
     },
     beforeDestroy() {
       Quagga.stop();

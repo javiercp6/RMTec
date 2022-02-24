@@ -43,7 +43,6 @@ public class SolicitudControl {
 
     @GetMapping(value = "/listacompletaenviada")
     public List<SolicitudUsuario> listace(){
-        List<SolicitudUsuario> l = servicio.listaCompletaEnviada();
         return servicio.listaCompletaEnviada();
     }
 

@@ -15,8 +15,12 @@ export default class Usuario {
       return axios.get(this.url + "/listar/", data , this.options ) 
    }
 
+   obtenerPorUserName(userName){
+      
+      return axios.post(this.url + `/obtenerporusername/${userName}`) 
+   }
 
-   listaPorSolicitud(){
+   listarPorSolicitud(){
       return axios.get(this.url + "/listarporsolicitud/", this.options ) 
    }
    

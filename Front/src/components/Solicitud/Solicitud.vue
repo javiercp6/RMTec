@@ -182,7 +182,7 @@
 </template>
 
 <script>
-import SolicitudService from '../../Servicio/SolicitudService'
+import UsuarioService from '../../Servicio/UsuarioService'
 import FormSolicitud from './FormSolicitud.vue'
 import EliminarSolicitud from './EliminarSolicitud.vue'
 import jwt_decode from 'jwt-decode'
@@ -214,7 +214,7 @@ export default {
         modmodif: false,
         modelimtod: false,
         modmcalnivel: false,
-        solicitudService: null,
+        usuarioService: null,
         
       }
     },
@@ -223,12 +223,12 @@ export default {
     },
     
      created(){
-       this.solicitudService = new SolicitudService();
+       this.usuarioService = new UsuarioService();
      },
      mounted(){
+      
       this.listar()
       const decoded = jwt_decode(localStorage.getItem("token"))
-      console.log(decoded)
 
      },
      methods: {
@@ -237,8 +237,10 @@ export default {
           
          listar(){
            console.log("listar")
-             this.solicitudService.listar().then(response =>{
+           console.log(jwt_decode(localStorage.getItem("token")).sub)
+             this.usuarioService.obtenerPorUserName(jwt_decode(localStorage.getItem("token")).sub).then(response =>{
                 console.log(response.data)
+                console.log("data del usuario")
                 this.solicitudes = response.data
                  
              })

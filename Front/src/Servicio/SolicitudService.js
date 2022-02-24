@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import jwt_decode from 'jwt-decode'
 
 export default class Solicitud {
    options = {
@@ -16,9 +16,9 @@ export default class Solicitud {
    }
 
    listaCompletaEnviada(){
-      return axios.get(this.url + "/listacompletaenviada/", this.options ) 
+      return axios.get(this.url + "/listacompletaenviada/") 
    }
-
+   
    listaPorSolicitud(){
       return axios.get(this.url + "/listarporsolicitud/", this.options ) 
    }
@@ -34,7 +34,7 @@ export default class Solicitud {
    
    salvarSolicitud(data) {
       const salvSolicitud = {
-         idUsuario: 6,
+         nombreUsuario: jwt_decode(localStorage.getItem("token")).sub,
          solicitud: {
             id: data.id,
             marca: data.marca,
