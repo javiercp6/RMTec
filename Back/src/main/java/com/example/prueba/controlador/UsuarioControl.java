@@ -6,6 +6,7 @@ import com.example.prueba.servicio.repo.IUsuarioServi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,8 @@ import java.util.List;
 public class UsuarioControl {
     @Autowired
     private IUsuarioServi servi;
+    @Autowired
+    private PasswordEncoder encoder;
 
     @GetMapping(value = "/listar")
     public List<Usuario> listar(){
@@ -35,6 +38,7 @@ public class UsuarioControl {
 
     @PostMapping(value = "/salvar")
     public ResponseEntity<Usuario> salvar(@RequestBody Usuario usuario){
+        usuario.setPassword(encoder.encode(usuario.getPassword()));
         return ResponseEntity.ok(servi.salvar(usuario));
     }
 
