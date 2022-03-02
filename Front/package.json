@@ -13,9 +13,11 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "jspdf": "^2.5.1",
     "jwt-decode": "^3.1.2",
     "quagga": "^0.12.1",
-    "quasar": "^1.0.0"
+    "quasar": "^1.0.0",
+    "vue-html2pdf": "^1.8.0"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",

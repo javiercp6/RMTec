@@ -1,5 +1,6 @@
 <template>
   <q-page padding>
+    
     <template v-if="loading">
       <span class="absolute-center">
         <q-spinner
@@ -83,6 +84,7 @@
                   size= 18px
                   name="file_upload"
                   class="icon-btn"
+                  @click="exportarSolicitud"
                   >
                   <q-tooltip>Exportar</q-tooltip>
                 </q-icon>
@@ -186,11 +188,15 @@ import UsuarioService from '../../Servicio/UsuarioService'
 import FormSolicitud from './FormSolicitud.vue'
 import EliminarSolicitud from './EliminarSolicitud.vue'
 import jwt_decode from 'jwt-decode'
+import jsPDF from 'jspdf'
+//import VueHtml2pdf from '../Solicitud/AdministrarSolicitud/CustodioSolicitud/Generatepdf.vue'
+import VueHtml2pdf from 'vue-html2pdf'
 
 export default {
     components : {
         EliminarSolicitud,
-        FormSolicitud
+        FormSolicitud,
+        //VueHtml2pdf
         //CalcNivel
       },
 
@@ -305,6 +311,37 @@ export default {
                this.solicitudes.splice(i, 1)
              }
            }
+         },
+
+         exportarSolicitud(){
+           
+           const pdf = new jsPDF( {
+             orientation: "portrait",
+             
+             format: "letter"
+           })
+           const columns = [
+            {title: "Title", dataKey: "title"},
+            {title: "Description", dataKey: "description"}
+          ];
+           const body = [
+              {title: 'todo 1', description: 'description 1'},
+              {title: 'todo 2', description: 'description2'},
+              {title: 'todo 3', description: 'description 3'},
+              {title: 'todo 4', description: 'description 4'},
+              {title: 'todo 5', description: 'description 5'}
+            ]
+           /*    */
+            
+            
+            /* pdf.autoTable({
+              columns,
+              body,  
+              margin: {top: 60}
+           }) */
+           pdf.setFontSize(20)
+           pdf.text(10, 15, 'Registro de medio tecnológico')
+           pdf.save('solicitud.pdf')
          }
      }
 }
