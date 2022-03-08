@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -28,7 +29,7 @@ public class Usuario extends Entidad {
     @Column
     @Enumerated(EnumType.STRING)
     private Rol rolSecundario;    
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToMany(cascade = CascadeType.REMOVE,fetch = FetchType.EAGER)
     private List<Solicitud> solicitudes;
 
     public Usuario() {

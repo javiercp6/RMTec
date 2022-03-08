@@ -25,8 +25,26 @@
 </template>
 
 <script>
+import jwt_decode from 'jwt-decode'
 export default {
-  name: 'PageIndex'
+  name: 'PageIndex',
+
+  mounted() {
+    this.permisos()
+  },
+
+  methods: {
+    permisos(){
+      console.log(jwt_decode(localStorage.getItem("token")))
+      if (jwt_decode(localStorage.getItem("token")) || jwt_decode(localStorage.getItem("token")).roles[0].authority === "Solicitante") {
+        console.log("fffffffffffff")
+      } else {
+        console.log("push login")
+        this.$router.push("/login")
+      }
+      console.log(localStorage)
+    }
+  }
 }
 </script>
 

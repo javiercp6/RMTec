@@ -26,7 +26,7 @@ public class UserDetailsSI implements UserDetailsService {
 
         Set<GrantedAuthority> authorities = new HashSet<>();
 
-        if(arg0.equals("admin")){
+        if(arg0.equals("admi")){
             authorities.add(new GrantedAuthority() {
                 @Override
                 public String getAuthority() {

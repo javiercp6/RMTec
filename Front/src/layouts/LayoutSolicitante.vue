@@ -76,7 +76,14 @@
             <q-avatar size="26px">
               <img src="../assets/10.jpg">
             </q-avatar>
-            <q-tooltip>Account</q-tooltip>
+            <q-menu>
+              <q-list style="min-width: 100px">
+                <q-item clickable v-close-popup @click="deslogear">
+                  <q-item-section>Salir</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+            <!-- <q-tooltip>Account</q-tooltip> -->
           </q-btn>
         </div>
       </q-toolbar>
@@ -250,6 +257,11 @@ export default {
         }  
       }
     },
+
+    deslogear(){
+      localStorage.removeItem('token')
+      this.$router.push("login")
+    }
   }
 }
 </script>

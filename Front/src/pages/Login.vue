@@ -12,6 +12,7 @@
                             <q-input
                                 v-model="formLogin.usuario"
                                 ref="usuario"
+                                mask="SSSSSSSSSSSSSSSSSSSSSSSSSSSS"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Este campo no puede enviarse vacio']"
                                 label="Usuario"
@@ -103,7 +104,7 @@ export default {
 
                     })
                     .catch(error => {
-                            console.log(error, "Error en el login")
+                            console.log(error.response.data.message)
                             this.errored = true
                     })
                     .finally(() => this.loading = false);

@@ -3,17 +3,26 @@ package com.example.prueba.modelo;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
 public class Solicitud extends Entidad{
+    @Column(nullable = false)
     private String marca;
+    @Column(nullable = false)
     private String modelo;
+    @Column(unique = true, nullable = false)
     private String noserie;
+    @Column(nullable = false)
     private String macwifi;
+    @Column(nullable = false)
     private String maccable;
+    @Column(nullable = false)
     private String tipo;
+    @Column(nullable = false)
     private String estado;
+    @Column(nullable = false)
     private Date fecha;
     
     public Solicitud() {    }

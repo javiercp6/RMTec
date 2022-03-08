@@ -13,14 +13,16 @@
                 label="Marca"
                 dense
                 hint="Escriba la marca del medio tecnológico"
+                mask="SSSSSSSSSSSSSSSSSSSSSSSSSSSS"
                 lazy-rules
-                :rules="[ val => val && val.length > 0 || 'Este campo no puede enviarse vacio']"
+                :rules="[ val => val && val.length > 0 || 'Este campo no puede enviarse vacio', val => val && val.length > 0 || 'Este campo no puede enviarse vacio']"
                 />
                 <q-input
                 v-model="solicit.modelo"
                 dense
                 label="Modelo"
                 hint="Escriba el modelo del medio tecnológico"
+                mask="NNNNNNNNNNNNNNNNNNNNNNNN"
                 lazy-rules
                 :rules="[ val => val && val.length > 0 || 'Este campo no puede enviarse vacio']"
                 />
@@ -29,6 +31,7 @@
                 dense
                 label="No. Serie"
                 hint="Escriba el número de serie del medio tecnológico"
+                mask="NNNNNNNNNNNNNNNNNNNNNNNN"
                 lazy-rules
                 :rules="[ val => val && val.length > 0 || 'Este campo no puede enviarse vacio']"
                 />

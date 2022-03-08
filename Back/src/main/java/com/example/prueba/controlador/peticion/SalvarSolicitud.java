@@ -5,6 +5,7 @@ import com.example.prueba.modelo.Solicitud;
 public class SalvarSolicitud {
     String nombreUsuario;
     Solicitud solicitud;
+    public SalvarSolicitud(){}
     public SalvarSolicitud(String nombreUsuario, Solicitud solicitud) {
         this.nombreUsuario = nombreUsuario;
         this.solicitud = solicitud;
