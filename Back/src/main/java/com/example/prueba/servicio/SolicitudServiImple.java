@@ -76,6 +76,10 @@ public class SolicitudServiImple  implements ISolicitudServi{
 
     @Override
     public void eliminarTodas() {
+        List<Solicitud> solicitudes = repo.findAll();
+        for(Solicitud s : solicitudes){
+            usuarioRepo.findBySolicitudes(s).setSolicitudes(null);
+        }
         repo.deleteAll();
         
     }
