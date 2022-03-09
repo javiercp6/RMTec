@@ -16,4 +16,6 @@ public interface ISolicitudServi {
     List<SolicitudUsuario> listaCompletaEnviada();
     void eliminarPorId(int id);
     void eliminarTodas();
+    void denegar();
+    void aceptar();
 }

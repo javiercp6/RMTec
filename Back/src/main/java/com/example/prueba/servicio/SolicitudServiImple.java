@@ -85,6 +85,27 @@ public class SolicitudServiImple  implements ISolicitudServi{
     }
 
     @Override
+    public void denegar() {
+        for (Solicitud s : repo.findAll()){
+            if(s.getEstado().equals("Enviada")){
+                s.setEstado("Denegada");
+                repo.save(s);
+            }
+        }
+    }
+
+    @Override
+    public void aceptar() {
+        for (Solicitud s : repo.findAll()){
+            if(s.getEstado().equals("Enviada")){
+                s.setEstado("Aceptada");
+                repo.save(s);
+            }
+        }
+
+    }
+
+    @Override
     public SalvarSolicitud salvarSolicitud(SalvarSolicitud solicitud) {
         repo.save(solicitud.getSolicitud());
         Usuario u = usuarioRepo.findByUsername(solicitud.getNombreUsuario());

@@ -95,5 +95,15 @@ public class SolicitudControl {
         servicio.eliminarTodas();
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping(value = "/denegadas")
+    public void denegar(){
+
+    }
+
+    @GetMapping(value = "/aceptadas")
+    public void aceptar(){
+
+    }
     
 }
